@@ -1,0 +1,17 @@
+Summary of Gaussian Elimination Algorithm:
+The folllowing is done for each iteration while creating the upper triangular matrix.
+The partial pivoting is done by the master process and is swapped to create the pivot row.
+Now the rows are partitioned among the processes and the variables are eliminated in those rows in parallel.
+Once the upper triangular matrix is created, we can get the final values of X by performing back substitution. 
+
+Summary of Conjugate Gradient Algorithm:
+The standard algorithm is followed. The main parallelism is done while computing the Matrix Product Ap
+The rows of A are partitioned among the different processes.
+
+
+The Time Comparisons for the 2 methods are as follows:
+For a Symmetric Positive Matrix A of size 1000x1000 running using 10 processes.
+CG Takes ~1 second
+While Gaussian Elimination takes ~14 seconds.
+
+This is because Conjugate Gradient has much lesser computation and the memory overhead for broadcasting is significantly less.
